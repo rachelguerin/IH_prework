@@ -1,11 +1,25 @@
-def solve_cipher(cipher)
+def solve_cipher(cipher, shift)
 	cipher_array = cipher.chars
 
 	for i in 0..cipher_array.length-1
-		cipher_array[i] = (cipher_array[i].ord - 1).chr
+
+		if cipher_array[i] != " "
+			unciphered_ord = cipher_array[i].ord + shift
+			if unciphered_ord < 97 
+				unciphered_ord += 26
+			elsif unciphered_ord > 122
+				unciphered_ord -= 26
+			end
+			#puts "unciphered_ord after: #{unciphered_ord}"		
+		cipher_array[i] = unciphered_ord.chr
+		end
+		
 	end
+
 	return_string = cipher_array.join
 	return return_string
 end
 
-puts solve_cipher("ifmmp")
+puts solve_cipher("ifmmp", -1)
+puts solve_cipher("p| uhdo qdph lv grqdog gxfn", -3)
+
