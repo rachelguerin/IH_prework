@@ -1,4 +1,4 @@
-def solve_cipher(cipher, shift)
+def solve_cipher(cipher, shift=-3)
 	cipher_array = cipher.chars
 
 	for i in 0..cipher_array.length-1
@@ -20,6 +20,6 @@ def solve_cipher(cipher, shift)
 	return return_string
 end
 
-puts solve_cipher("ifmmp", -1)
-puts solve_cipher("p| uhdo qdph lv grqdog gxfn", -3)
+puts solve_cipher("ifmmp",-1)
+puts solve_cipher("pb uhdo qdph lv grqdog gxfn")
 
