@@ -20,6 +20,6 @@ def solve_cipher(cipher, shift=-3)
 	return return_string
 end
 
-puts solve_cipher("ifmmp",-1)
+puts solve_cipher("ifmmp",25)
 puts solve_cipher("pb uhdo qdph lv grqdog gxfn")
 
