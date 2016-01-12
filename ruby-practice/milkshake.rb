@@ -48,14 +48,21 @@ end
 rachels_milkshake = MilkShake.new
 banana = Ingredient.new("Banana",2)
 chocolate_chips = Ingredient.new("Chocolate Chips",1)
+strawberry = Ingredient.new("Strawberry",2)
+yoghurt = Ingredient.new("Yoghurt",1.5)
 
 rachels_milkshake.add_ingredient(banana)
 rachels_milkshake.add_ingredient(chocolate_chips)
+milkshake2 = MilkShake.new
+milkshake2.add_ingredient(strawberry)
+milkshake2.add_ingredient(yoghurt)
+
 puts rachels_milkshake.price_of_milkshake
+puts milkshake2.price_of_milkshake
 
 rachels_order = ShakeShop.new
 rachels_order.add_milkshake(rachels_milkshake)
-rachels_order.add_milkshake(rachels_milkshake)
+rachels_order.add_milkshake(milkshake2)
 
 puts rachels_order.checkout
 
