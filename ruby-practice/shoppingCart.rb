@@ -3,6 +3,16 @@ class ShoppingCart
 	def initialize
 		@items = []
 	end
+	def add_item(item)
+		@items.push(item)
+	end
+	def checkout
+		total_cost_of_order = 0
+		@items.each do |item|
+			total_cost_of_order += item.price
+		end
+		puts "Your total today is #{total_cost_of_order}€. Have a nice day!"
+	end
 end
 
 class Item
@@ -29,7 +39,7 @@ end
 
 class Fruit < Item
 	def price
-		if [0,6].index(Date.today.wday) == 1
+		if [0,6].index(Date.today.wday)
 			@price - (@price * 0.10)
 		else 
 			@price			
@@ -38,13 +48,18 @@ class Fruit < Item
 end
 
 banana = Fruit.new("Banana",10)
-orange_juice = Item.new("Orange Juice",10)
+oj = Item.new("Orange Juice",10)
 rice = Item.new("Rice",1)
 vaccuum_cleaner = Houseware.new("Vaccuum Cleaner",150)
 anchovies = Item.new("Anchovies",2)
 
-puts "#{banana.name}: #{banana.price}€"
-puts "#{orange_juice.name}: #{orange_juice.price}€"
-puts "#{rice.name}: #{rice.price}€"
-puts "#{vaccuum_cleaner.name}: #{vaccuum_cleaner.price}€"
-puts "#{anchovies.name}: #{anchovies.price}€"
+# puts "#{banana.name}: #{banana.price}€"
+# puts "#{orange_juice.name}: #{orange_juice.price}€"
+# puts "#{rice.name}: #{rice.price}€"
+# puts "#{vaccuum_cleaner.name}: #{vaccuum_cleaner.price}€"
+# puts "#{anchovies.name}: #{anchovies.price}€"
+
+joshs_cart = ShoppingCart.new
+joshs_cart.add_item(oj)
+joshs_cart.add_item(rice)
+joshs_cart.checkout
