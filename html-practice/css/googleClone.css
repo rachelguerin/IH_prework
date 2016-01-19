@@ -1,0 +1,157 @@
+body {
+	font-family: arial,sans-serif;
+	font-size: smaller;
+	margin:  0px;
+}
+
+header {
+	text-align: right;
+	padding: 15px 13px;
+	color: #666;
+}
+
+header ul {
+	margin: 0px;
+	/* text-align: right; */
+}
+
+header li {
+	display: inline;
+	list-style-type: none;
+	padding: 0px 15px 0px 0px;
+}
+
+header img {
+	display: inline-block;
+	/* text-align: right; */
+	vertical-align: middle;
+}
+
+header img:hover {
+	opacity: 55%;
+}
+
+header table {
+	display: inline-block;
+    vertical-align: middle;
+}
+
+header a {
+	text-decoration: none;
+	color: #666;
+}
+
+header a:hover {
+	text-decoration: underline;
+}
+
+.gridIcon {
+	border: 1px solid #222;
+	background-color: #222;
+	text-align: right;
+	opacity: 55%;
+}
+
+.gridIcon:hover {
+	opacity: 85%;
+}
+
+.content {
+	height: 400px;
+}
+
+.logo {
+	height: 92px;
+	text-align: center;
+	padding: 103px 0px 0px 0px;
+	margin: 40px 40px 0px 40px;
+}
+
+.logo-subtext {
+	color: #4285f4;
+	font: 16px/16px roboto-regular, arial, sans-serif;
+	left: 107px;
+	position: relative;
+	top: -20px;
+	white-space: nowrap;
+}
+
+.logo img {
+	height: 92px;
+}
+
+.searchBox {
+	border: 1px solid #e0e0e0;
+	width: 40%;
+	height: 40px;
+	margin: 30px 0px;
+}
+
+.searchBox:hover {
+	border: 1px solid #757575;
+}
+
+.searchBox:active {
+	border: 1px solid #0000ff;
+}
+
+.searchBox img {
+	float: right;
+	margin: 3px 10px;
+}
+
+.buttons {
+	display: inline;
+	margin: 40px 4px;
+	padding: 8px 16px;
+	border: 1px solid #F2f2f2;
+	background-color: #f2f2f2;
+	border-radius: 3px;
+	font-weight: bold;
+	color: #6D6D6D;
+}
+
+.buttons:hover {
+	border-color: #c6c6c6;
+	box-shadow: -1px 1px 1px #c6c6c6;
+}
+
+.buttons:active {
+	border-color: #0000ff;
+}
+
+footer {
+	background: #f2f2f2;
+	height: 40px;
+/*	color: #666673;*/
+	border-top: 1px solid #e4e4e4;
+}
+
+footer li {
+	display: inline;
+	list-style-type: none;
+	padding: 0px 15px 0px 0px;
+}
+
+footer a {
+	text-decoration: none;
+	color: #666;
+}
+
+footer a:hover {
+	text-decoration: underline;
+}
+
+footer a:active {
+	color: #dd4b39;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	text-align: right;
+	display: inline-block;
+	float: right;
+}
