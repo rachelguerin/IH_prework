@@ -180,7 +180,7 @@ console.log( counter['f'] === 1 );
 // http://www.w3schools.com/js/default.asp
 // Use the search option in both of them to find a function.
 
-
+/*
 
 function arrayAwesomenator( array ) 
 {
@@ -292,6 +292,6 @@ function arrayToString( array )
 console.log(arrayAwesomenator(["a", 6, "B", "F", "*", 8, 78, "J" ]) === "668Abfj");
 console.log(arrayAwesomenator(["*", "j", 6, "A", "F", "*", 8, "C", "b", "a", 78, "J", 43523, 1111, "r", "q", "y" ]) === "46688AAbcfjjqry");
 
-
+*/
 
 
