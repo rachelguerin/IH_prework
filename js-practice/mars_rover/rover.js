@@ -25,10 +25,10 @@ var myMap = {
   objects: [myRover,sheRover,rock,hole]
 }
 
-function checkForObstacles(map,position) {
-  for (i in map.objects) {
-    if (map.objects[i].position[0] === position[0] && map.objects[i].position[1] === position[1]){
-      console.log("There is a " + map.objects[i].type + " at [" + position + "].");
+function checkForObstacles(position) {
+  for (i in myMap.objects) {
+    if (myMap.objects[i].position[0] === position[0] && myMap.objects[i].position[1] === position[1]){
+      console.log("There is a " + myMap.objects[i].type + " at [" + position + "].");
       return true;
     }
   }
@@ -38,36 +38,48 @@ function checkForObstacles(map,position) {
 }
 
 function printPosition(rover) {
-  console.log("New Rover Position: [" + rover.position[0] + ", " 
+  console.log("Rover " + rover.type + " Position: [" + rover.position[0] + ", " 
                 + rover.position[1] + "] " + rover.direction);
 }
 
-function goForward(rover,map) {
+function printAction(rover,action) {
+  console.log("Rover " + rover.type + " " + action);
+}
+
+function goForward(rover) {
+  printAction(rover,"going forward..");
   switch(rover.direction) {
     case 'N':
-      if (checkForObstacles(map,[rover.position[0]+1,rover.position[1]]) === false) {
+      if (checkForObstacles([rover.position[0]+1,rover.position[1]]) === false) {
         rover.position[0]++
-        if (rover.position[0] > map.dimensions[0]) {
-          rover.position[0] -= map.dimensions[0]+1;
+        if (rover.position[0] > myMap.dimensions[0]) {
+          rover.position[0] -= myMap.dimensions[0]+1;
         }
       }
       break;
     case 'E':
-      rover.position[1]++
-      if (rover.position[1] > map.dimensions[1]) {
-        rover.position[1] -= map.dimensions[1]+1;
+      if (checkForObstacles([rover.position[0],rover.position[1]+1]) === false) {
+        rover.position[1]++
+        if (rover.position[1] > myMap.dimensions[1]) {
+          rover.position[1] -= myMap.dimensions[1]+1;
+        }
       }
       break;
     case 'S':
-      rover.position[0]--
-      if (rover.position[0] < 0) {
-        rover.position[0] += map.dimensions[0]+1;
+      
+      if (checkForObstacles([rover.position[0]-1,rover.position[1]]) === false) {
+        rover.position[0]--
+        if (rover.position[0] < 0) {
+          rover.position[0] += myMap.dimensions[0]+1;
+        }
       }
       break;
     case 'W':
-      rover.position[1]--
-      if (rover.position[1] < 0) {
-        rover.position[1] += map.dimensions[1]+1;
+      if (checkForObstacles([rover.position[0],rover.position[1]-1]) === false) {
+        rover.position[1]--
+        if (rover.position[1] < 0) {
+          rover.position[1] += myMap.dimensions[1]+1;
+        }
       }
       break;
   };
@@ -76,30 +88,39 @@ function goForward(rover,map) {
    
 }
 
-function goBack(rover,map){
+function goBack(rover){
+  printAction(rover,"going back..");
   switch(rover.direction){
     case 'N':
-      rover.position[0]--;
-      if (rover.position[0] < 0) {
-        rover.position[0] += 10;
+      if (checkForObstacles([rover.position[0]--,rover.position[1]]) === false) {
+        rover.position[0]--;
+        if (rover.position[0] < 0) {
+          rover.position[0] += myMap.dimensions[0]+1;
+        }
       }
       break;
     case 'E':
-      rover.position[1]--;
-      if (rover.position[1] < 0) {
-        rover.position[1] += map.dimensions[1]+1;
+      if (checkForObstacles([rover.position[0],rover.position[1]--]) === false) {
+        rover.position[1]--;
+        if (rover.position[1] < 0) {
+          rover.position[1] += myMap.dimensions[1]+1;
+        }
       }
       break;
     case 'S':
-      rover.position[0]++;
-      if (rover.position[0] > map.dimensions[0]) {
-        rover.position[0] -= map.dimensions[0]+1;
+      if (checkForObstacles([rover.position[0]++,rover.position[1]]) === false) {
+        rover.position[0]++;
+        if (rover.position[0] > myMap.dimensions[0]) {
+          rover.position[0] -= myMap.dimensions[0]+1;
+        }
       }
       break;
     case 'W':
-      rover.position[1]++;
-      if (rover.position[1] > map.dimensions[1]) {
-        rover.position[1] -= map.dimensions[1]+1;
+      if (checkForObstacles([rover.position[0],rover.position[1]++]) === false) {
+        rover.position[1]++;
+        if (rover.position[1] > myMap.dimensions[1]) {
+          rover.position[1] -= myMap.dimensions[1]+1;
+        }
       }
       break;
   };
@@ -108,12 +129,13 @@ function goBack(rover,map){
 }
 
 function turnRight(rover) {
+  printAction(rover,"turning..");
   switch(rover.direction){
     case 'N':
       rover.direction = 'E';
       break;
     case 'E':
-      rrover.direction = 'S';
+      rover.direction = 'S';
       break;
     case 'S':
       rover.direction = 'W';
@@ -127,6 +149,7 @@ function turnRight(rover) {
 }
 
 function turnLeft(rover) {
+  printAction(rover,"turning..");
   switch(rover.direction){
     case 'N':
       rover.direction = 'W';
@@ -146,20 +169,20 @@ function turnLeft(rover) {
 }
 
 
-function moveRover(rover,map,directions) {
+function moveRover(rover,directions) {
   for (i in directions) {
     switch (directions[i]) {
       case 'f':
-        goForward(rover,map);
+        goForward(rover);
         break;
       case 'b':
-        goBack(rover,map);
+        goBack(rover);
         break;
       case 'r':
-        turnRight(rover,map);
+        turnRight(rover);
         break;
       case 'l':
-        turnLeft(rover,map);
+        turnLeft(rover);
         break;
     }
   }
@@ -168,8 +191,8 @@ function moveRover(rover,map,directions) {
 // checkForObstacles(myMap,[5,5]);
 
 var myDirections = "fffrfflfffbb".split("");
-moveRover(myRover,myMap,myDirections);
-moveRover(sheRover,myMap,myDirections);
+moveRover(myRover,myDirections);
+moveRover(sheRover,myDirections);
 
 // myDirections = "fffffffffffflffffffffffff".split("");
 // moveRover(myRover,myDirections);
