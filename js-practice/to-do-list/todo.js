@@ -17,20 +17,31 @@ window.onload = function() {
     // this should create a new list item in the to-do list
     // and set the text as the input from the todo-input field
     var newToDoItem = document.createElement('li');
-    var newToDo = document.getElementById('todo-input');
-    newToDoItem.textContent = newToDo.value;
+    var newToDoText = document.getElementById('todo-input');
+    newToDoItem.textContent = newToDoText.value;
+
+
     var toDoList = document.querySelector('.todo-list-items li:last-child');
-    toDoList.parentNode.insertBefore(newToDoItem,toDoList.nextSibling);
-    newToDo.value = "";
+    
+    if (toDoList === null) {
+      toDoList = document.querySelector('.todo-list-items');
+      toDoList.appendChild(newToDoItem);
+    } else {
+      toDoList.parentNode.insertBefore(newToDoItem,toDoList.nextSibling);
+    }
+    newToDoText.value = "";
   }
 
   function markAsDone() {
     var firstToDo = document.querySelector('.todo-list-items li:first-child');
     var doneList = document.querySelector('.done-list-items li:last-child');
-    doneList.parentNode.insertBefore(firstToDo,doneList.nextSibling);
-    firstToDo.classList.add('done');
-
-    // firstToDo.parentNode.removeChild(firstToDo);  
+    
+    if (firstToDo === null) {
+      alert('You have done all your tasks. Go take a relaxing bath you rock star you.')
+    } else {
+      doneList.parentNode.insertBefore(firstToDo,doneList.nextSibling);
+      firstToDo.classList.add('done');
+    } 
   }
   
 }
